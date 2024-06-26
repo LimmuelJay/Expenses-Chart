@@ -1,5 +1,5 @@
 import SpendingStyled from "./spendings.styled";
-import BarChart from "../custom/Bar Chart/barchart";
+import BarChart from "../custom/barchart/barchart";
 import { Typography } from "antd";
 
 const { Title, Paragraph } = Typography;

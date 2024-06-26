@@ -14,11 +14,15 @@ const SpendingStyled = styled.div`
         width: 80%;
     }
 
+    h3 {
+        margin: 0;
+    }
+
     .spending {
         width: 100%;
         display: flex;
         align-self: flex-start;
-        margin-bottom: 50px;
+        margin-bottom: 60px;
     }
 
     .bar-chart-wrapper {
@@ -56,7 +60,6 @@ const SpendingStyled = styled.div`
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            margin-bottom: 10px;
 
             .percent {
                 color: hsl(25, 47%, 15%);

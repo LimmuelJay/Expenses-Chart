@@ -8,9 +8,7 @@ const BarChart = (props) => {
     return (
         <BarChartStyled height={props.height} bgColor={props.bgColor} bgColorHover={props.bgColorHover}>
             <Tooltip title={text}>
-                <Button>
-
-                </Button>
+                <Button />
             </Tooltip>
             <Paragraph className="days">{props.days}</Paragraph>
         </BarChartStyled>
