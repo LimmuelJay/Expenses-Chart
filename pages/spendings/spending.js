@@ -1,10 +1,17 @@
 import SpendingStyled from "./spendings.styled";
 import BarChart from "../custom/barchart/barchart";
 import { Typography } from "antd";
+import SpendingsApi from "../api/SpendingsApi";
 
 const { Title, Paragraph } = Typography;
 
 const Spending = () => {
+
+    const num = SpendingsApi.map((items,index) => {
+        return items.spent
+    })
+    const highestNum = Math.max(...num)
+
     return (
         <SpendingStyled>
             <div className="spending">
@@ -12,13 +19,24 @@ const Spending = () => {
             </div>
 
             <div className="bar-chart-wrapper">
-                <BarChart money="$13.65" days="mon" height="43px"/>
-                <BarChart money="$34.78" days="tue" height="74px"/>
-                <BarChart money="$52.36" days="wed" height="122px" bgColor="hsl(186, 34%, 60%)" bgColorHover="hsl(186, 34%, 60%)"/>
-                <BarChart money="$31.07" days="thu" height="61px"/>
-                <BarChart money="$23.17" days="fri" height="47px"/>
-                <BarChart money="$42.65" days="sat" height="98px"/>
-                <BarChart money="$27.12" days="sun" height="53px"/>
+                {
+                    SpendingsApi.map((items, index) => {
+                        const percent= items.spent / highestNum;
+                        const barMaxHeight = 120
+                        
+                        console.log("CHECK_percent", percent)
+
+                        return(
+                            <BarChart 
+                            money={items.spent} 
+                            days={items.day} 
+                            height={`${percent * barMaxHeight}px`} 
+                            bgColor={items.color ? "hsl(186, 34%, 60%)" : "hsl(10, 79%, 65%)"} 
+                            />
+                        )
+                    })
+                }
+
             </div>
 
             <hr />

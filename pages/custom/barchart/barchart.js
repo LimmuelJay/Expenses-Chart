@@ -3,7 +3,7 @@ import { Button, Tooltip, Typography } from "antd"
 
 const BarChart = (props) => {
     const { Paragraph } = Typography;
-    const text = <BarChartStyled><Paragraph className="money">{props.money}</Paragraph></BarChartStyled>
+    const text = <BarChartStyled><Paragraph className="money">{`$${props.money}`}</Paragraph></BarChartStyled>
 
     return (
         <BarChartStyled height={props.height} bgColor={props.bgColor} bgColorHover={props.bgColorHover}>

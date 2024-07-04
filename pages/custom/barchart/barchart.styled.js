@@ -16,7 +16,7 @@ const BarChartStyled = styled.div`
     }
 
     .ant-btn-default:hover {
-        background-color: ${props=> (props.bgColorHover ? props.bgColorHover : 'hsl(10, 79%, 65%)')} !important;
+        background-color: ${props=> (props.bgColor ? props.bgColor : 'hsl(10, 79%, 65%)')} !important;
     }
 
     .days {
