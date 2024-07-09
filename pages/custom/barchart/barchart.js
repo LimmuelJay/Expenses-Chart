@@ -1,4 +1,4 @@
-import BarChartStyled from "./barchart.styled";
+import BarChartStyled from "@/pages/custom/barchart/barchart.styled";
 import { Button, Tooltip, Typography } from "antd"
 
 const BarChart = (props) => {

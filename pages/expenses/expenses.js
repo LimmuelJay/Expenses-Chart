@@ -1,64 +1,63 @@
-import ExpensesStyled from "./expenses.styled";
-import BarChart from "../custom/barchart/barchart";
+import ExpensesStyled from "@/pages/expenses/expenses.styled";
+import BarChart from "@/pages/custom/barchart/barchart";
 import { Typography } from "antd";
 
 const { Title, Paragraph } = Typography;
 
 const Expenses = () => {
-    const expensesDataArray = [
+    const expensesDataArr = [
         {
-            key: 0,
             expenses: parseFloat((Math.random() * 100).toFixed(2)),
             day: "mon"
         }, 
         {
-            key: 1,
             expenses: parseFloat((Math.random() * 100).toFixed(2)),
             day: "tue"
         },    
         {
-            key: 2,
             expenses: parseFloat((Math.random() * 100).toFixed(2)),
             day: "wed"
         },
         {
-            key: 3,
             expenses: parseFloat((Math.random() * 100).toFixed(2)),
             day: "thu"
         },
         {
-            key: 4,
             expenses: parseFloat((Math.random() * 100).toFixed(2)),
             day: "fri"
         },
         {
-            key: 5,
             expenses: parseFloat((Math.random() * 100).toFixed(2)),
             day: "sat"
         },
         {
-            key: 6,
             expenses: parseFloat((Math.random() * 100).toFixed(2)),
             day: "sun"
         },
     ]
 
-    const expensesArr = expensesDataArray.map((items,index) => {
+    const newExpensesDataArr = expensesDataArr.map((item, index) => ({
+        ...item,
+        key: index 
+    }));
+    console.log("CHECK_newExpensesDataArr", newExpensesDataArr)
+
+    const expensesArr = newExpensesDataArr.map((items) => {
         return items.expenses
     })
     const highestNum = Math.max(...expensesArr)
 
-    const highestExpenseObj = expensesDataArray.find(item => item.expenses === highestNum);
+    const highestExpenseObj = newExpensesDataArr.find(item => item.expenses === highestNum);
     console.log("CHECK_highestExpenseObj", highestExpenseObj)
 
     const updatedObj = { ...highestExpenseObj, bgColor: "hsl(186, 34%, 60%)", bgColorHover: "hsl(186, 34%, 60%)"};
     console.log("CHECK_updatedObject", updatedObj);
 
-    const updatedExpensesDataArr = expensesDataArray.map(item => 
+    const updatedExpensesDataArr = newExpensesDataArr.map(item => 
         item.key === highestExpenseObj.key ? updatedObj : item
     );
     console.log("CHECK_updatedExpensesDataArr", updatedExpensesDataArr)
-
+  
     return (
         <ExpensesStyled>
             <div className="spending">
@@ -74,7 +73,8 @@ const Expenses = () => {
                         console.log("CHECK_percent", percent)
 
                         return(
-                            <BarChart 
+                            <BarChart
+                            key={items.key} 
                             money={items.expenses} 
                             days={items.day} 
                             height={`${percent * barMaxHeight}px`} 
