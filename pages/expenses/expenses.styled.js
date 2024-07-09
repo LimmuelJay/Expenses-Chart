@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const SpendingStyled = styled.div`
+const ExpensesStyled = styled.div`
     width: 370px;
     min-height: 300px;
     background-color: hsl(33, 100%, 98%);
@@ -81,4 +81,4 @@ const SpendingStyled = styled.div`
     }
 `
 
-export default SpendingStyled
+export default ExpensesStyled

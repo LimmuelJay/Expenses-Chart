@@ -1,12 +1,12 @@
 import MainStyled from "./main.styled";
 import Balance from "../balance/balance";
-import Spending from "../spendings/spending";
+import Expenses from "../expenses/expenses";
 
 const Main = () => {
     return (
         <MainStyled>
             <Balance />
-            <Spending />
+            <Expenses />
         </MainStyled>
     )
 }

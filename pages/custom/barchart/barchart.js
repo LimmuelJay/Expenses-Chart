@@ -15,4 +15,4 @@ const BarChart = (props) => {
     )
 }
 
-export default BarChart
+export default BarChart;
