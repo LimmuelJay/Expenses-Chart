@@ -35,29 +35,15 @@ const Expenses = () => {
             day: "sun"
         },
     ]
-
-    const newExpensesDataArr = expensesDataArr.map((item, index) => ({
-        ...item,
-        key: index 
-    }));
-    console.log("CHECK_newExpensesDataArr", newExpensesDataArr)
-
-    const expensesArr = newExpensesDataArr.map((items) => {
+    console.log("CHECK_expensesDataArr", expensesDataArr)
+    
+    const expensesArr = expensesDataArr.map((items) => {
         return items.expenses
     })
+    
     const highestNum = Math.max(...expensesArr)
+    console.log("CHECK_highestNum", highestNum)
 
-    const highestExpenseObj = newExpensesDataArr.find(item => item.expenses === highestNum);
-    console.log("CHECK_highestExpenseObj", highestExpenseObj)
-
-    const updatedObj = { ...highestExpenseObj, bgColor: "hsl(186, 34%, 60%)", bgColorHover: "hsl(186, 34%, 60%)"};
-    console.log("CHECK_updatedObject", updatedObj);
-
-    const updatedExpensesDataArr = newExpensesDataArr.map(item => 
-        item.key === highestExpenseObj.key ? updatedObj : item
-    );
-    console.log("CHECK_updatedExpensesDataArr", updatedExpensesDataArr)
-  
     return (
         <ExpensesStyled>
             <div className="spending">
@@ -66,25 +52,18 @@ const Expenses = () => {
 
             <div className="bar-chart-wrapper">
                 {
-                    updatedExpensesDataArr.map((items, index) => {
-                        const percent= items.expenses / highestNum;
-                        const barMaxHeight = 120
-                        
-                        console.log("CHECK_percent", percent)
-
+                    expensesDataArr.map((item, index) => {
+                        console.log("CHECK_item", item)
                         return(
-                            <BarChart
-                            key={items.key} 
-                            money={items.expenses} 
-                            days={items.day} 
-                            height={`${percent * barMaxHeight}px`} 
-                            bgColor={items.bgColor}
-                            bgColorHover={items.bgColorHover}
+                            <BarChart 
+                            key={`${index}-${item.day}`}
+                            expenses={item.expenses}
+                            day={item.day}
+                            highestNum={highestNum}
                             />
                         )
                     })
                 }
-
             </div>
 
             <hr />

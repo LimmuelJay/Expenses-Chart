@@ -2,9 +2,9 @@ import { styled } from "styled-components";
 
 const BarChartStyled = styled.div`
     .ant-btn-default {
-        background-color: ${props => (props.bgColor ? props.bgColor : 'hsl(10, 79%, 65%)')} !important;
+        background-color: ${props => (props.isHighestExpenses ? 'hsl(186, 34%, 60%)' : "hsl(10, 79%, 65%)")} !important;
         width: 42px;
-        height: ${props => (props.height ? props.height : 'auto')} !important;
+        height: ${props => props.height};
 
         @media screen and (max-width: 425px) {
             width: 37px;
@@ -16,7 +16,7 @@ const BarChartStyled = styled.div`
     }
 
     .ant-btn-default:hover {
-        background-color: ${props => (props.bgColorHover ? props.bgColorHover : 'hsl(10, 79%, 65%)')} !important
+        background-color: ${props => (props.isHighestExpenses ? 'hsl(186, 34%, 60%)' : "hsl(10, 79%, 65%)")} !important
     }
 
     .days {
@@ -24,7 +24,7 @@ const BarChartStyled = styled.div`
         color: hsl(28, 10%, 53%);
     }
 
-    .money {
+    .expenses {
         color: white;
         font-weight: 500;
         margin: 0;
