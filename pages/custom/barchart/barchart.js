@@ -19,7 +19,7 @@ const BarChart = (props) => {
     console.log("CHECK_height", day, height)
 
     return (
-        <BarChartStyled height={height} isHighestExpenses={isHighestExpenses}>
+        <BarChartStyled height={height} color={isHighestExpenses ? "hsl(186, 34%, 60%)" : "hsl(10, 79%, 65%)"}>
             <Tooltip title={text}>
                 <Button />
             </Tooltip>
